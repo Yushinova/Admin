@@ -12,6 +12,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" BorderBrush="Black"
                 BorderThickness="0.5,0.5,0.5,0.5">
@@ -24,5 +25,6 @@
         <TextBlock x:Name="DishDescription" Grid.Row="3" HorizontalAlignment="Left" FontSize="12"
                    TextWrapping="Wrap"
            Text="{Binding Path = Description_}" FontFamily="a_FuturaRound"/>
+        <TextBlock Grid.Row="4"  x:Name="DishId" Text="{Binding Path= Id_dish}" Visibility="Hidden"/>
     </Grid>
 </UserControl>

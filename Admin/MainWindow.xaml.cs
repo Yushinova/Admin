@@ -1,4 +1,5 @@
 ﻿using ClassLib;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -16,31 +17,16 @@ namespace Admin
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+   
     public partial class MainWindow : Window
     {
-        public List<ClassLib.Dish_bll> dishes = new List<ClassLib.Dish_bll>()
-            {
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1}
-            };
         public MainWindow()
         {
             InitializeComponent();
-            DishesWindow window = new DishesWindow(this);
-            
-           // window.DataContext = dishes;
+            DishesWindow window = new DishesWindow();
             window.Show();
         }
-        public void AddDish(Dish_bll dish)
-        {
-            dishes.Add(dish);
-        }
+       
     }
 }
