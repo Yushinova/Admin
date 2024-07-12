@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:Admin"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-      
+    <Grid Background="#FF686261">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="MainPanel" Grid.Row="0" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Width="200" Height="60">
+            <Button x:Name="RegButton" Height="30" FontFamily="a_FuturaRound Bold_0"
+                    Content="Регистрация" FontSize="18" Click="RegButton_Click"/>
+            <Button x:Name="AutButton" Height="30" FontFamily="a_FuturaRound Bold_0"
+                    Content="Авторизация" FontSize="18" Click="AutButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

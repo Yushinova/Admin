@@ -24,9 +24,19 @@ namespace Admin
         public MainWindow()
         {
             InitializeComponent();
-            DishesWindow window = new DishesWindow();
-            window.Show();
         }
-       
+
+        private void RegButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            registrationWindow.ShowDialog();
+          
+        }
+
+        private void AutButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

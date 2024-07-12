@@ -23,7 +23,9 @@
 
   <ItemGroup>
     <Resource Include="User_control\выход.png" />
-    <Resource Include="выход.png" />
+    <Resource Include="Icons\выход.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

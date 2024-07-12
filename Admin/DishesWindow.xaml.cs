@@ -61,7 +61,7 @@ namespace Admin
         {
             dishes[dish.Id_dish] = dish;
         }
-        private void RedButton_Click(object sender, RoutedEventArgs e)
+        private void RedButton_Click(object sender, RoutedEventArgs e)//надо подумать как сделать по другому
         {
             int ind = int.Parse((((sender as Button).Parent as StackPanel).Children[0] as DishPanel).DishId.Text);
             dish = dishes[ind];
