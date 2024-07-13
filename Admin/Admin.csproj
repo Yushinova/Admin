@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ClassLib\ClassLib\ClassLib.csproj" />
+    <ProjectReference Include="..\..\..\..\Desktop\проект\виталий\ClassLib\ClassLib\ClassLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

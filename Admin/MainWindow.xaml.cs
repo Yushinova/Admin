@@ -18,7 +18,7 @@ namespace Admin
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-   
+    public delegate void main_delegate();
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -28,7 +28,7 @@ namespace Admin
 
         private void RegButton_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationWindow registrationWindow = new RegistrationWindow();
+            RegistrationWindow registrationWindow = new RegistrationWindow(this);
             registrationWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             registrationWindow.ShowDialog();
           
@@ -36,7 +36,14 @@ namespace Admin
 
         private void AutButton_Click(object sender, RoutedEventArgs e)
         {
-
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow(this);
+            authorizationWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            authorizationWindow.ShowDialog();
         }
+
+        //void CloseWindow()
+        //{
+        //    this.Close();
+        //}
     }
 }
