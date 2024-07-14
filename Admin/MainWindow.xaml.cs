@@ -41,9 +41,5 @@ namespace Admin
             authorizationWindow.ShowDialog();
         }
 
-        //void CloseWindow()
-        //{
-        //    this.Close();
-        //}
     }
 }

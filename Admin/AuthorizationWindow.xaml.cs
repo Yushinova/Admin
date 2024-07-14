@@ -40,8 +40,9 @@ namespace Admin
             {
                 MessageBox.Show("Вход выполнен!");
                 main_Delegate();
-                this.Close();
                 OrdersWindow ordersWindow = new OrdersWindow(admin);
+                this.Close();
+                
                 ordersWindow.Show();
             }
             else

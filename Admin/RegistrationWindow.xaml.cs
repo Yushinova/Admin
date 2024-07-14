@@ -78,8 +78,8 @@ namespace Admin
                     {
                         MessageBox.Show("Администратор зарегистрирован!");
                         main_Delegate();
-                        this.Close();
                         OrdersWindow ordersWindow = new OrdersWindow(admin);
+                        this.Close();
                         ordersWindow.Show();
                     }                      
                     else MessageBox.Show("Ошибка регистрации!");
