@@ -29,7 +29,7 @@ namespace Admin
             red_delegate = window.RedDish;
             dish = window.dish;
             MainGrid.DataContext = dish;
-            DishName.Text = window.dish.Name_dish;
+           // DishName.Text = window.dish.Name_dish;
         }
 
         private void DishImage_MouseDown(object sender, MouseButtonEventArgs e)
@@ -75,6 +75,7 @@ namespace Admin
             if (!string.IsNullOrEmpty(dish.Name_dish) && !string.IsNullOrEmpty(dish.Description) && dish.Price != 0 && dish.Image_byte != null)
             {
                 red_delegate(dish);
+                
                 //запрос на вставку блюда на сервер
             }
             else

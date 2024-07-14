@@ -50,7 +50,8 @@ namespace Admin
         }
         public void RedDish(Dish_bll dish)//запрос на апдейт
         {
-            dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish;
+            dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish;           
+            //XZ.Text = dishes[dishes.FindIndex(d => d.Id_dish == dish.Id_dish)].Image_byte.Length.ToString();//картинки меняются
             DishesList.ItemsSource = dishes;
         }
         private void RedButton_Click(object sender, RoutedEventArgs e)//надо подумать как сделать по другому
@@ -61,7 +62,7 @@ namespace Admin
             dishWindow.Owner = this;
             dishWindow.Title = "Редактор";
             dishWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            dishWindow.Show();
+            dishWindow.ShowDialog();
         }
         public void SetAllDishes()
         {
