@@ -80,6 +80,7 @@ namespace Admin
                         main_Delegate();
                         OrdersWindow ordersWindow = new OrdersWindow(admin);
                         this.Close();
+                        ordersWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                         ordersWindow.Show();
                     }                      
                     else MessageBox.Show("Ошибка регистрации!");

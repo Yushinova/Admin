@@ -21,8 +21,8 @@ namespace Admin
     /// </summary>
     public partial class RedDishWindow : Window
     {
-        public dish_delegate red_delegate;//там
-        public Dish_bll dish = new Dish_bll();//там
+        public dish_delegate red_delegate;
+        public Dish_bll dish = new Dish_bll();
         public RedDishWindow(DishesWindow window)
         {
             InitializeComponent();
@@ -55,6 +55,7 @@ namespace Admin
                 imageSource.EndInit();
                 DishImage.Source = imageSource;
                 dish.Image_byte = image_bytes;
+                dish.Image_name = System.IO.Path.GetFileName(path);
             }
         }
 

@@ -24,25 +24,15 @@ namespace Admin
     /// </summary>
     public partial class DishesWindow : Window
     {
-        //делать запрос, получать все блюда и засовывать в обсервал иначе не видно
-        public ObservableCollection<ClassLib.Dish_bll> dishes = new ObservableCollection<ClassLib.Dish_bll>()
-            {
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1},
-                new ClassLib.Dish_bll { Name_dish="Бургер", Price=199.55, Description="250г. Булка, котлета, сыр, соус", Image_byte=File.ReadAllBytes(@"C:\Users\User\Desktop\проект\me\бургер.png"), Image_name="бургер.png", isActual=1}
-            };
-       public Dish_bll dish = new Dish_bll();
+        public Services.Service service = new Services.Service();
+        public Dish_bll dish = new Dish_bll();
+        public List<Dish_bll> dishes;
         public DishesWindow()
         {
 
             InitializeComponent();
-            DishesList.ItemsSource = dishes;
+            SetAllDishes();
+
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)//добавляется обсервал нужно
         {
@@ -50,26 +40,44 @@ namespace Admin
             dishWindow.Owner = this;
             dishWindow.Title = "Новое блюдо";
             dishWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            dishWindow.Show();
+            dishWindow.ShowDialog();
           
         }
-        public void AddDish(Dish_bll dish)//тут
+        public void AddDish(Dish_bll dish)//тут запрос на вставку блюда и обновлеие листа блюд
         {
-            dishes.Add(dish);
+            service.AddNewDish(dish);
+            SetAllDishes();
         }
-        public void RedDish(Dish_bll dish)
+        public void RedDish(Dish_bll dish)//запрос на апдейт
         {
-            dishes[dish.Id_dish] = dish;
+            dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish;
+            DishesList.ItemsSource = dishes;
         }
         private void RedButton_Click(object sender, RoutedEventArgs e)//надо подумать как сделать по другому
         {
             int ind = int.Parse((((sender as Button).Parent as StackPanel).Children[0] as DishPanel).DishId.Text);
-            dish = dishes[ind];
+            dish = dishes.First(d => d.Id_dish == ind);
             RedDishWindow dishWindow = new RedDishWindow(this);
             dishWindow.Owner = this;
             dishWindow.Title = "Редактор";
             dishWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             dishWindow.Show();
+        }
+        public void SetAllDishes()
+        {
+            dishes = new List<Dish_bll>();
+            try
+            {
+                dishes = service.SetListDishes();
+                if (dishes != null)
+                {
+                    DishesList.ItemsSource = dishes;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка обновления блюд!");
+            }
         }
     }
 }

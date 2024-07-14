@@ -1,6 +1,8 @@
-﻿using ClassLib;
+﻿using Admin.Models;
+using ClassLib;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -27,8 +29,9 @@ namespace Admin
     public partial class OrdersWindow : Window
     {
         public Admin_Cafe_bll admin_;
-        public List<Order_bll> orders_bll = new List<Order_bll>();
-        public List<User_bll> users = new List<User_bll>();
+        public List<Order_bll> orders_bll = new List<Order_bll>();//запрос
+        public List<User_bll> users = new List<User_bll>();//запрос
+        public ObservableCollection<Wpf_order> wpf_orders = new ObservableCollection<Wpf_order>();
         public OrdersWindow(Admin_Cafe_bll admin)
         {
             admin_ = admin;
@@ -39,7 +42,8 @@ namespace Admin
 
         private void DishButton_Click(object sender, RoutedEventArgs e)
         {
-
+            DishesWindow dishesWindow = new DishesWindow();
+            dishesWindow.ShowDialog();
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
@@ -50,7 +54,7 @@ namespace Admin
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)

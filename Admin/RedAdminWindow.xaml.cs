@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace Admin
 {
     /// <summary>
-    /// Логика взаимодействия для RedAdminWindow.xaml
+    /// пока не реализуем
     /// </summary>
     public partial class RedAdminWindow : Window
     {

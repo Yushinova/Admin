@@ -77,5 +77,129 @@ namespace Admin.Services
                 return null;
             }
         }
+
+        public List<User_bll>SetListUsers()
+        {
+            try
+            {
+                TcpClient tcpClient = new TcpClient();
+                tcpClient.Connect("127.0.0.1", 8888);
+                NetworkStream stream = tcpClient.GetStream();
+                Courier courier = new Courier()
+                {
+                    Header = com.CommandGetAllUsers
+                };
+                TransportServices.PackerAndSender(stream, courier);
+                courier = TransportServices.ReciverAndUnpacker(stream);
+                List<User_bll> users = new List<User_bll>();
+                users = TransportServices.Unpacker<List<User_bll>>(courier.Entity);
+                tcpClient.Close();
+                if (courier.Header == com.AnswerCatchAllUsers)
+                {
+                    return users;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Order_bll> SetListOrders()//нет такой команды
+        {
+            try
+            {
+                TcpClient tcpClient = new TcpClient();
+                tcpClient.Connect("127.0.0.1", 8888);
+                NetworkStream stream = tcpClient.GetStream();
+                Courier courier = new Courier()
+                {
+                    Header = com.CommandGetAllOrdersByID
+                };
+                TransportServices.PackerAndSender(stream, courier);
+                courier = TransportServices.ReciverAndUnpacker(stream);
+                List<Order_bll> orders = new List<Order_bll>();
+                orders = TransportServices.Unpacker<List<Order_bll>>(courier.Entity);
+                tcpClient.Close();
+                if (courier.Header == com.AnswerCatchAllUsers)
+                {
+                    return orders;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Dish_bll> SetListDishes()
+        {
+            try
+            {
+                TcpClient tcpClient = new TcpClient();
+                tcpClient.Connect("127.0.0.1", 8888);
+                NetworkStream stream = tcpClient.GetStream();
+                Courier courier = new Courier()
+                {
+                    Header = com.CommandGetDishes
+                };
+                TransportServices.PackerAndSender(stream, courier);
+                courier = TransportServices.ReciverAndUnpacker(stream);
+                List<Dish_bll> dishes = new List<Dish_bll>();
+                dishes = TransportServices.Unpacker<List<Dish_bll>>(courier.Entity);
+                tcpClient.Close();
+                if (courier.Header == com.AnswerSetAllDishes)
+                {
+                    return dishes;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public void AddNewDish(Dish_bll dish)
+        {
+            try
+            {
+                TcpClient tcpClient = new TcpClient();
+                tcpClient.Connect("127.0.0.1", 8888);
+                NetworkStream stream = tcpClient.GetStream();
+                byte[] dish_write = TransportServices.Packer(dish);
+                Courier courier = new Courier()
+                {
+                    Header = com.CommandAddNewDish,
+                    Entity = dish_write
+                };
+                TransportServices.PackerAndSender(stream, courier);
+                courier = TransportServices.ReciverAndUnpacker(stream);
+                tcpClient.Close();
+                if (courier.Header == com.AnswerNewDishInsertedOK)
+                {
+                    MessageBox.Show("Блюдо вставлено!");
+                }
+                else
+                {
+                    MessageBox.Show("Блюдо НЕ вставлено!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка сервера!");
+            }
+        }
     }
 }

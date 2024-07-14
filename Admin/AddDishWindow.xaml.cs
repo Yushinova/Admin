@@ -47,7 +47,6 @@ namespace Admin
             if(!string.IsNullOrEmpty(dish.Name_dish)&&!string.IsNullOrEmpty(dish.Description)&&dish.Price!=0&&dish.Image_byte!=null) 
             {
                add_delegate(dish);
-               //запрос на вставку блюда на сервер
             }
             else
             {
@@ -80,6 +79,7 @@ namespace Admin
                 image.Source = imageSource;
                 (sender as Button).Content = image;
                 dish.Image_byte = image_bytes;
+                dish.Image_name = System.IO.Path.GetFileName(path);
             }
         }
     }
