@@ -50,9 +50,8 @@ namespace Admin
         }
         public void RedDish(Dish_bll dish)//Глюки
         {
-            dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish; //блюдо меняется но не отображается картинка новая!
-          
-            //XZ.Text = dishes[dishes.FindIndex(d => d.Id_dish == dish.Id_dish)].Image_byte.Length.ToString();//байты меняются
+            dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish; 
+            DishesList.Items.Refresh();//без этого блюдо меняется но не отображается картинка новая!
             DishesList.ItemsSource = dishes;
         }
         private void RedButton_Click(object sender, RoutedEventArgs e)//надо подумать как сделать по другому
