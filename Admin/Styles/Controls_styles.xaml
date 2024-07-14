@@ -21,4 +21,5 @@
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>
+
 </ResourceDictionary>

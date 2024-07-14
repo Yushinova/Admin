@@ -9,12 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\меню.png" />
     <None Remove="User_control\выход.png" />
     <None Remove="выход.png" />
+    <None Remove="меню.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Resource Include="Icons\меню.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +30,7 @@
     <Resource Include="Icons\выход.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="меню.png" />
   </ItemGroup>
 
 </Project>
