@@ -48,10 +48,11 @@ namespace Admin
             service.AddNewDish(dish);
             SetAllDishes();
         }
-        public void RedDish(Dish_bll dish)//запрос на апдейт
+        public void RedDish(Dish_bll dish)//Глюки
         {
-            dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish;           
-            //XZ.Text = dishes[dishes.FindIndex(d => d.Id_dish == dish.Id_dish)].Image_byte.Length.ToString();//картинки меняются
+            dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish; //блюдо меняется но не отображается картинка новая!
+          
+            //XZ.Text = dishes[dishes.FindIndex(d => d.Id_dish == dish.Id_dish)].Image_byte.Length.ToString();//байты меняются
             DishesList.ItemsSource = dishes;
         }
         private void RedButton_Click(object sender, RoutedEventArgs e)//надо подумать как сделать по другому

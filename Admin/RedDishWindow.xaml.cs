@@ -75,7 +75,7 @@ namespace Admin
             if (!string.IsNullOrEmpty(dish.Name_dish) && !string.IsNullOrEmpty(dish.Description) && dish.Price != 0 && dish.Image_byte != null)
             {
                 red_delegate(dish);
-                
+                this.Close();
                 //запрос на вставку блюда на сервер
             }
             else
