@@ -21,7 +21,8 @@ namespace Admin.Mappers
                 isActual = order_Bll.isActual,
                 Name_dishes = order_Bll.Name_dishes,
                 User_Address = user.Address,
-                User_Phone = user.Phone
+                User_Phone = user.Phone,
+                isPaid = order_Bll.isPaid
             };
         }
     }

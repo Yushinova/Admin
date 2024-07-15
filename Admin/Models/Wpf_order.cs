@@ -20,7 +20,7 @@ namespace Admin.Models
         public string? isActual { get; set; }//1-Актуален, когда заказ будет отправлен, админ редактирует на 0-Не актуален
         public string? User_Phone { get; set; }//это и будет логин, будет возможность его изменить
         public string? User_Address { get; set; }//адес доставки пока будет, будет возможность его изменить
-
+        public string? isPaid { get; set; }//Оплачен, Неоплачен 
         public event PropertyChangedEventHandler? PropertyChanged;//только оплачено или нет
 
         public string isActual_
@@ -30,6 +30,15 @@ namespace Admin.Models
             {
                 isActual = value;
                 OnPropertyChanged("isActual_");
+            }
+        }
+        public string IsPaid_
+        {
+            get { return isPaid; }
+            set
+            {
+                isPaid = value;
+                OnPropertyChanged("IsPaid_");
             }
         }
         public void OnPropertyChanged([CallerMemberName] string prop = "")

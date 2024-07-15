@@ -36,19 +36,20 @@
             </Button>
         </StackPanel>
         <DataGrid Grid.Row="1" x:Name="OrdersGrid" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
-    RowBackground="LightGray" AlternatingRowBackground="White" >
+    RowBackground="LightGray" AlternatingRowBackground="White" CanUserAddRows="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Состав заказа" Binding="{Binding Path=Name_dishes}" Width="200" />
+                <DataGridTextColumn ElementStyle="{StaticResource WrapText}" Header="Состав заказа" Binding="{Binding Path=Name_dishes}" Width="150" />
                 <DataGridHyperlinkColumn Header="Сумма" Binding="{Binding Path=Cost}" Width="60" />
-                <DataGridTextColumn Header="Дата" Binding="{Binding Path=Date_order}" Width="80" />
-                <DataGridTextColumn Header="Доставить" Binding="{Binding Path=Date_delivery}" Width="80" />
-                <DataGridTextColumn Header="Адрес" Binding="{Binding Path=User_Address}" Width="200" />
+                <DataGridTextColumn ElementStyle="{StaticResource WrapText}" Header="Дата" Binding="{Binding Path=Date_order}" Width="80" />
+                <DataGridTextColumn ElementStyle="{StaticResource WrapText}" Header="Доставить" Binding="{Binding Path=Date_delivery}" Width="80" />
+                <DataGridTextColumn ElementStyle="{StaticResource WrapText}" Header="Адрес" Binding="{Binding Path=User_Address}" Width="170" />
                 <DataGridTextColumn Header="Телефон" Binding="{Binding Path=User_Phone}" Width="100" />
-                <DataGridHyperlinkColumn Header="Статус" Binding="{Binding Path=isActual_}" Width="50" />
+                <DataGridHyperlinkColumn Header="Готовность" Binding="{Binding Path=isActual_}"  />
+                <DataGridHyperlinkColumn Header="Оплата" Binding="{Binding Path=IsPaid_}"  />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button Style="{StaticResource Button_style}"  Margin="600,0,0,0" Content="Заказ готов"/>
+            <Button x:Name="CloseOrder" Style="{StaticResource Button_style}"  Margin="600,0,0,0" Content="Заказ готов" Click="CloseOrder_Click"/>
         </StackPanel>
         <StackPanel x:Name="MenuPanel" Width="150" Height="60" Grid.RowSpan="2" Visibility="Hidden"
                     HorizontalAlignment="Right" VerticalAlignment="Top"

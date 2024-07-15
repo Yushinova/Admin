@@ -76,15 +76,35 @@ namespace Admin
             users = new List<User_bll>();
             orders_bll = service.SetListOrders();
             users = service.SetListUsers();
-            MessageBox.Show("Юзеры пришли");
-            //if(orders_bll!=null && users!=null)
-            //{
-            //    foreach (var item in orders_bll)
-            //    {
-            //        wpf_orders.Add(mapper.MapOrder_bllToWpf(item, users.First(u=>u.Id_user==item.Id_user)));
-            //    }
-            //    OrdersGrid.DataContext = wpf_orders;
-            //}
+            if (orders_bll != null && users != null)
+            {
+                wpf_orders.Clear();
+                foreach (var item in orders_bll)
+                {
+                    if(item.isPaid=="Оплачен")
+                    {
+                        wpf_orders.Add(mapper.MapOrder_bllToWpf(item, users.First(u => u.Id_user == item.Id_user)));
+                    }                    
+                }
+                OrdersGrid.ItemsSource = wpf_orders;
+            }
+        }
+
+        private void CloseOrder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int id = (OrdersGrid.SelectedItem as Wpf_order).Id_order;
+                Order_bll order_Bll = orders_bll.First(o => o.Id_order == id);
+                order_Bll.isActual = "Готов";
+                CloseOrder.Content = order_Bll.isActual;
+                service.UpdateOrder(order_Bll);
+                SetWpfOrders();
+            }
+            catch
+            {
+                MessageBox.Show("Заказ не выбран");
+            }
         }
     }
 }

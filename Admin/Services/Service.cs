@@ -201,5 +201,36 @@ namespace Admin.Services
                 MessageBox.Show("Ошибка сервера!");
             }
         }
+
+        public void UpdateOrder(Order_bll order)
+        {
+            try
+            {
+                TcpClient tcpClient = new TcpClient();
+                tcpClient.Connect("127.0.0.1", 8888);
+                NetworkStream stream = tcpClient.GetStream();
+                byte[] order_write = TransportServices.Packer(order);
+                Courier courier = new Courier()
+                {
+                    Header = com.CommandOrderClosed,
+                    Entity = order_write
+                };
+                TransportServices.PackerAndSender(stream, courier);
+                courier = TransportServices.ReciverAndUnpacker(stream);
+                tcpClient.Close();
+                if (courier.Header == com.AnswerOrderClosedOK)
+                {
+                    MessageBox.Show("Заказ закрыт!");
+                }
+                else
+                {
+                    MessageBox.Show("Заказ не закрыт!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка сервера!");
+            }
+        }
     }
 }
