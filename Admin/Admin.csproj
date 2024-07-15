@@ -16,13 +16,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Icons\меню.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    <Reference Include="ClassLib">
+      <HintPath>..\..\..\..\Desktop\проект\виталий\ClassLib\ClassLib\bin\Debug\net8.0\ClassLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\проект\виталий\ClassLib\ClassLib\ClassLib.csproj" />
+    <Resource Include="Icons\меню.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

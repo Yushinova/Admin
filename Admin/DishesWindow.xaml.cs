@@ -48,13 +48,13 @@ namespace Admin
             service.AddNewDish(dish);
             SetAllDishes();
         }
-        public void RedDish(Dish_bll dish)//Глюки
+        public void RedDish(Dish_bll dish)//Пока запрос на сервер не реализован!
         {
             dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish; 
             DishesList.Items.Refresh();//без этого блюдо меняется но не отображается картинка новая!
             DishesList.ItemsSource = dishes;
         }
-        private void RedButton_Click(object sender, RoutedEventArgs e)//надо подумать как сделать по другому
+        private void RedButton_Click(object sender, RoutedEventArgs e)
         {
             int ind = int.Parse((((sender as Button).Parent as StackPanel).Children[0] as DishPanel).DishId.Text);
             dish = dishes.First(d => d.Id_dish == ind);
