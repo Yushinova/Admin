@@ -118,14 +118,14 @@ namespace Admin.Services
                 NetworkStream stream = tcpClient.GetStream();
                 Courier courier = new Courier()
                 {
-                    Header = com.CommandGetAllOrdersByID
+                    Header = com.CommandGetAllOrders
                 };
                 TransportServices.PackerAndSender(stream, courier);
                 courier = TransportServices.ReciverAndUnpacker(stream);
                 List<Order_bll> orders = new List<Order_bll>();
                 orders = TransportServices.Unpacker<List<Order_bll>>(courier.Entity);
                 tcpClient.Close();
-                if (courier.Header == com.AnswerCatchAllUsers)
+                if (courier.Header == com.AnswerCatchAllOrders)
                 {
                     return orders;
                 }

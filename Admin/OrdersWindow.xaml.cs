@@ -28,16 +28,18 @@ namespace Admin
     public delegate void admin_delegate(Admin_Cafe_bll admin);
     public partial class OrdersWindow : Window
     {
+        public Services.Service service = new Services.Service();
+        public Mappers.Mapper mapper = new Mappers.Mapper();
         public Admin_Cafe_bll admin_;
-        public List<Order_bll> orders_bll = new List<Order_bll>();//запрос
-        public List<User_bll> users = new List<User_bll>();//запрос
+        public List<Order_bll> orders_bll;//запрос
+        public List<User_bll> users ;//запрос
         public ObservableCollection<Wpf_order> wpf_orders = new ObservableCollection<Wpf_order>();
         public OrdersWindow(Admin_Cafe_bll admin)
         {
             admin_ = admin;
             InitializeComponent();
             AdminPanel.DataContext = admin_;
-            
+            SetWpfOrders();
         }
 
         private void DishButton_Click(object sender, RoutedEventArgs e)
@@ -67,6 +69,22 @@ namespace Admin
         {
             admin_ = admin_new;
             AdminPanel.DataContext = admin_;
+        }
+        public void SetWpfOrders()
+        {
+            orders_bll = new List<Order_bll>();
+            users = new List<User_bll>();
+            orders_bll = service.SetListOrders();
+            users = service.SetListUsers();
+            MessageBox.Show("Юзеры пришли");
+            //if(orders_bll!=null && users!=null)
+            //{
+            //    foreach (var item in orders_bll)
+            //    {
+            //        wpf_orders.Add(mapper.MapOrder_bllToWpf(item, users.First(u=>u.Id_user==item.Id_user)));
+            //    }
+            //    OrdersGrid.DataContext = wpf_orders;
+            //}
         }
     }
 }
