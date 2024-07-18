@@ -13,13 +13,15 @@ namespace Admin.Services
 {
     public class Service//запросы к сервису
     {
-
+        public string IP = "185.10.131.232";
+        public int port = 40888;
+        //"127.0.0.1", 8888
         public Admin_Cafe_bll RegistrationAdmin(Admin_Cafe_bll admin)
         {
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 byte[] admin_write = TransportServices.Packer(admin);
                 Courier courier = new Courier()
@@ -51,7 +53,7 @@ namespace Admin.Services
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 byte[] admin_write = TransportServices.Packer(admin);
                 Courier courier = new Courier()
@@ -83,7 +85,7 @@ namespace Admin.Services
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 Courier courier = new Courier()
                 {
@@ -114,7 +116,7 @@ namespace Admin.Services
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 Courier courier = new Courier()
                 {
@@ -145,7 +147,7 @@ namespace Admin.Services
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 Courier courier = new Courier()
                 {
@@ -176,7 +178,7 @@ namespace Admin.Services
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 byte[] dish_write = TransportServices.Packer(dish);
                 Courier courier = new Courier()
@@ -207,7 +209,7 @@ namespace Admin.Services
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 byte[] order_write = TransportServices.Packer(order);
                 Courier courier = new Courier()
@@ -238,7 +240,7 @@ namespace Admin.Services
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 byte[] dish_write = TransportServices.Packer(dish);
                 Courier courier = new Courier()
@@ -269,7 +271,7 @@ namespace Admin.Services
             try
             {
                 TcpClient tcpClient = new TcpClient();
-                tcpClient.Connect("127.0.0.1", 8888);
+                tcpClient.Connect(IP, port);
                 NetworkStream stream = tcpClient.GetStream();
                 byte[] admin_write = TransportServices.Packer(admin);
                 Courier courier = new Courier()
