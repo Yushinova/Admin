@@ -50,9 +50,18 @@ namespace Admin
         }
         public void RedDish(Dish_bll dish)//Пока запрос на сервер не реализован!
         {
-            dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish; 
-            DishesList.Items.Refresh();//без этого блюдо меняется но не отображается картинка новая!
-            DishesList.ItemsSource = dishes;
+            try
+            {
+                service.UpdateDish(dish);
+                SetAllDishes();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка сервера!");
+            }
+            //dishes[dishes.FindIndex(d=>d.Id_dish==dish.Id_dish)] = dish; 
+            //DishesList.Items.Refresh();//без этого блюдо меняется но не отображается картинка новая!
+            //DishesList.ItemsSource = dishes;
         }
         private void RedButton_Click(object sender, RoutedEventArgs e)
         {

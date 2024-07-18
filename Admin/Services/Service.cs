@@ -232,5 +232,67 @@ namespace Admin.Services
                 MessageBox.Show("Ошибка сервера!");
             }
         }
+
+        public void UpdateDish(Dish_bll dish)
+        {
+            try
+            {
+                TcpClient tcpClient = new TcpClient();
+                tcpClient.Connect("127.0.0.1", 8888);
+                NetworkStream stream = tcpClient.GetStream();
+                byte[] dish_write = TransportServices.Packer(dish);
+                Courier courier = new Courier()
+                {
+                    Header = com.CommandDishUpdate,
+                    Entity = dish_write
+                };
+                TransportServices.PackerAndSender(stream, courier);
+                courier = TransportServices.ReciverAndUnpacker(stream);
+                tcpClient.Close();
+                if (courier.Header == com.AnswerDishUpdateOK)
+                {
+                    MessageBox.Show("Данные изменены!");
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось изменить данные!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка сервера!");
+            }
+        }
+
+        public void UpdateAdmin(Admin_Cafe_bll admin)
+        {
+            try
+            {
+                TcpClient tcpClient = new TcpClient();
+                tcpClient.Connect("127.0.0.1", 8888);
+                NetworkStream stream = tcpClient.GetStream();
+                byte[] admin_write = TransportServices.Packer(admin);
+                Courier courier = new Courier()
+                {
+                    Header = com.CommandAdminUpdate,
+                    Entity = admin_write
+                };
+                TransportServices.PackerAndSender(stream, courier);
+                courier = TransportServices.ReciverAndUnpacker(stream);
+                tcpClient.Close();
+                if (courier.Header == com.AnswerAdminUpdateOK)
+                {
+                    MessageBox.Show("Данные изменены!");
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось изменить данные!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка сервера!");
+            }
+        }
     }
 }

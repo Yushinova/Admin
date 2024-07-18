@@ -61,22 +61,16 @@ namespace Admin
 
         private void RedDish_Click(object sender, RoutedEventArgs e)
         {
-            try
+            double res;
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            if (!string.IsNullOrEmpty(dish.Name_dish) && !string.IsNullOrEmpty(dish.Description) && double.TryParse(DishPrice.Text, out res) && dish.Image_byte != null)
             {
                 dish.Name_dish = DishName.Text;
                 dish.Price = double.Parse(DishPrice.Text);
                 dish.Description = DishDescription.Text;
                 dish.isActual = 1;
-            }
-            catch
-            {
-                MessageBox.Show("Не все поля корректны!");
-            }
-            if (!string.IsNullOrEmpty(dish.Name_dish) && !string.IsNullOrEmpty(dish.Description) && dish.Price != 0 && dish.Image_byte != null)
-            {
                 red_delegate(dish);
                 this.Close();
-                //запрос на вставку блюда на сервер
             }
             else
             {
