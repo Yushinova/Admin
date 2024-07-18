@@ -106,5 +106,10 @@ namespace Admin
                 MessageBox.Show("Заказ не выбран");
             }
         }
+
+        private void MenuPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            MenuPanel.Visibility = Visibility.Hidden;
+        }
     }
 }
