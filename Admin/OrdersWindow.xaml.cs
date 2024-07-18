@@ -65,7 +65,7 @@ namespace Admin
             else MenuPanel.Visibility = Visibility.Hidden;
         }
         
-        public void ChageAdmin(Admin_Cafe_bll admin_new)//update admin
+        public void ChageAdmin(Admin_Cafe_bll admin_new)//TODO update admin
         {
             admin_ = admin_new;
             AdminPanel.DataContext = admin_;

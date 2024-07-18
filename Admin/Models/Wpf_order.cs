@@ -13,8 +13,8 @@ namespace Admin.Models
         public int Id_order { get; set; }//сохраняем заказ, присылаем юзеру с id из базы данных
         public string? Name_dishes { get; set; }//названия блюд через запятую для DataGrid написать отдельный метод, который принимает 
         //лист блюд и возвращает стринг 
-        public DateTime Date_order { get; set; }//дата заказа
-        public DateTime Date_delivery { get; set; }//дата доставки вызывать нужно календарик 
+        public string Date_order { get; set; }//дата заказа
+        public string Date_delivery { get; set; }//дата доставки вызывать нужно календарик 
         public double Cost { get; set; }//рассчитываемая стоимость(складывается из стоимости всех блюд) можно написать отдельный метод, который принимает
                                         //лист блюд и возвращает общую стоимость
         public string? isActual { get; set; }//1-Актуален, когда заказ будет отправлен, админ редактирует на 0-Не актуален

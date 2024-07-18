@@ -16,8 +16,8 @@ namespace Admin.Mappers
             {
                 Id_order = order_Bll.Id_order,
                 Cost = order_Bll.Cost,
-                Date_order = order_Bll.Date_order,
-                Date_delivery = order_Bll.Date_delivery,
+                Date_order = $"{order_Bll.Date_order}",
+                Date_delivery = $"{order_Bll.Date_delivery}",
                 isActual = order_Bll.isActual,
                 Name_dishes = order_Bll.Name_dishes,
                 User_Address = user.Address,
