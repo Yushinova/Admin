@@ -13,8 +13,8 @@ namespace Admin.Services
 {
     public class Service//запросы к сервису
     {
-        public string IP = "185.10.131.232";
-        public int port = 40888;
+        public string IP = "127.0.0.1";
+        public int port = 8888;
         //"127.0.0.1", 8888
         public Admin_Cafe_bll RegistrationAdmin(Admin_Cafe_bll admin)
         {
